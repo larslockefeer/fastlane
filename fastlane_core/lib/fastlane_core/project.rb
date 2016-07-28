@@ -216,7 +216,7 @@ module FastlaneCore
     def build_settings(key: nil, optional: true)
       unless @build_settings
         command = build_xcodebuild_showbuildsettings_command
-        command = "xcodebuild -showBuildSettings #{xcodebuild_parameters.join(' ')}"
+        UI.important(command) unless silent
 
         # xcode might hang here and retrying fixes the problem, see fastlane#4059
         begin
